@@ -1,0 +1,81 @@
+.speakers {
+  padding-top: 200px;
+  padding-bottom: 60px;
+  @media (max-width: $tablet) {
+    padding-top: 50px;
+  }
+
+  &__who {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    img {
+      max-width: 281px;
+    }
+  }
+  &__block {
+    position: relative;
+    height: 409px;
+    margin: 0 15px 40px 15px;
+    cursor: default;
+    overflow: hidden;
+    &:hover .speakers__mask {
+      opacity: 0.65;
+      transform: translateY(0%);
+    }
+
+    &:hover .speakers__hover {
+      opacity: 1;
+    }
+  }
+  &__hover {
+    transition: all 0.27s 0.27s ease-in-out;
+    display: inline-block;
+    vertical-align: middle;
+    width: 280px;
+    position: absolute;
+    left: 0;
+    opacity: 0;
+    top: 110px;
+    h5 {
+      font-size: 28px;
+      color: $black;
+      text-transform: uppercase;
+      transition: all 0.27s 0.27s ease-in-out;
+      text-align: center;
+      padding: 0 50px;
+    }
+    p {
+      text-align: center;
+      font-size: 28px;
+      line-height: 1.25rem;
+      color: $black;
+      font-family: 'Gogol';
+      transition: all 0.27s 0.27s ease-in-out;
+      padding: 0 15px;
+      word-break: break-word;
+    }
+  }
+  &__mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    opacity: 0;
+    height: 100%;
+    background: #f8e5ae;
+
+    transform: translateY(100%);
+    transition: all 0.27s ease-in-out;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      vertical-align: middle;
+      width: 1px;
+      height: 100%;
+    }
+  }
+}

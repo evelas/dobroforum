@@ -1,0 +1,51 @@
+@import 'variables';
+
+.button {
+  font-weight: bold;
+  border-radius: 25px;
+  padding: 10px 30px 5px 30px;
+  outline: none;
+  border: none;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color $duration ease-in-out;
+  border: 1px solid transparent;
+  @include noselect();
+
+  &_green {
+    background-color: $green;
+  }
+  &_orange {
+    background-color: $orange;
+  }
+  &_medium {
+    font-size: 31px;
+    @media (max-width: $tablet) {
+      font-size: 21px;
+    }
+  }
+  &_huge {
+    font-size: 41px;
+    @media (max-width: $tablet) {
+      font-size: 26px;
+    }
+  }
+  &,
+  span {
+    color: $white;
+  }
+
+  i,
+  span,
+  path,
+  svg {
+    transition: all $duration ease-in-out;
+  }
+
+  &:hover {
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+}

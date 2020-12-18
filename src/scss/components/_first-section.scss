@@ -1,0 +1,21 @@
+.welcome {
+  background: linear-gradient(to bottom, $violet 90%, $white 10%);
+  @media (max-width: $tablet) {
+    background: linear-gradient(to bottom, $violet 89%, $white 11%);
+  }
+  &__footer {
+    position: relative;
+    bottom: 100px;
+    @media (max-width: $desktop) {
+      bottom: 60px;
+    }
+    @media (max-width: $phoneLandscape) {
+      bottom: 40px;
+    }
+    img {
+      width: 100%;
+      position: relative;
+      top: 10px;
+    }
+  }
+}

@@ -1,0 +1,49 @@
+.broadcast {
+  &__info {
+    background-color: $orange;
+    padding-top: 100px;
+  }
+
+  &__vk {
+    text-align: center;
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    img {
+      @media (max-width: $tablet-width) {
+        width: 50%;
+      }
+    }
+  }
+
+  &__video {
+    background-image: url(../../assets/img/cobweb2.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 150px;
+    @media (max-width: $phoneLandscape) {
+      padding-bottom: 50px;
+    }
+
+    iframe {
+      position: relative;
+      z-index: 100;
+    }
+    &_green {
+      background-image: url(../../assets/img/cobweb3.png);
+    }
+  }
+
+  .img {
+    width: 100%;
+  }
+  &__mock {
+    max-width: 890px;
+    position: relative;
+    z-index: 10000;
+    width: 100%;
+    padding: 0 35px;
+  }
+}

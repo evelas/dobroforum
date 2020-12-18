@@ -1,0 +1,21 @@
+.programm {
+  padding: 90px 0 60px;
+  background-color: $orange;
+  &__title {
+    div {
+      position: relative;
+    }
+    img {
+      width: 100%;
+      position: absolute;
+      bottom: -250px;
+      z-index: 1000;
+      @media (max-width: $desktopBig) {
+        bottom: -170px;
+      }
+      @media (max-width: $tabletLandscape) {
+        display: none;
+      }
+    }
+  }
+}

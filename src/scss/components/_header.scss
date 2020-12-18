@@ -1,0 +1,135 @@
+@import 'variables';
+
+.header {
+  font-family: 'Myriad Pro';
+  margin-bottom: 15px;
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    background-color: $green;
+    padding: 50px 28px;
+    &.active {
+      background-color: $violet;
+    }
+    @media (max-width: $phoneLandscape) {
+      padding: 20px 12px;
+    }
+    img {
+      width: 152px;
+      @media (max-width: $phoneLandscape) {
+        width: 80px;
+      }
+    }
+  }
+
+  &__icon {
+    width: 208px;
+    text-align: center;
+    @media (max-width: $desktop) {
+      width: auto;
+      padding-right: 40px;
+    }
+    @media (max-width: $phonePlus) {
+      img {
+        width: 31px;
+      }
+    }
+  }
+
+  &__list {
+    max-width: 733px;
+    flex-wrap: wrap;
+    display: flex;
+    color: $white;
+    align-items: center;
+    font-size: 21px;
+    justify-content: center;
+    margin: 0 10px;
+    &_max {
+      max-width: 900px;
+    }
+    @media (max-width: $desktop) {
+      font-size: 19px;
+      max-width: 680px;
+    }
+  }
+  &__circle {
+    padding-right: 13px;
+    display: flex;
+    align-items: center;
+    height: 29px;
+    &.desktop {
+      display: none;
+    }
+    @media (max-width: $tabletLandscape) {
+      &.desktop {
+        display: block;
+        padding: 0 20px;
+
+        &::before {
+          font-size: 0;
+          width: 0;
+        }
+      }
+    }
+    @media (max-width: $phoneLandscape) {
+      &.desktop {
+        font-size: 14px;
+      }
+    }
+    a {
+      cursor: pointer;
+      color: $white;
+      text-transform: uppercase;
+    }
+    &:first-child {
+      &::before {
+        font-size: 0;
+        width: 0;
+      }
+    }
+    &:last-child {
+      padding-right: 0;
+    }
+    &::before {
+      content: '•';
+      color: #ffce46;
+      display: inline-block;
+      font-size: 24px;
+      width: 17px;
+    }
+    &_none {
+      &::before {
+        font-size: 0;
+        width: 0;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    font-size: 16px;
+    font-weight: bold;
+    width: 25%;
+    justify-content: space-between;
+    @media (max-width: $tabletLandscape) {
+      flex-direction: column;
+    }
+    span {
+      cursor: pointer;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+.mobile {
+  @media (max-width: $tablet) {
+    display: none;
+  }
+}

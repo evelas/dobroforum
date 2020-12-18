@@ -1,0 +1,14 @@
+.registration {
+  &__input {
+    &.error {
+      input {
+        border: 1px solid red;
+      }
+    }
+    &.active {
+      input {
+        border: 1px solid green;
+      }
+    }
+  }
+}

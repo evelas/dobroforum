@@ -1,0 +1,39 @@
+.about {
+  padding-bottom: 50px;
+
+  &__sections {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__first,
+  &__second {
+    width: 50%;
+    padding: 0 25px;
+    @media (max-width: $tabletLandscape) {
+      width: 100%;
+      padding: 25px;
+    }
+  }
+  &__first {
+    p {
+      max-width: 523px;
+      margin: auto;
+    }
+  }
+  &__maxheight {
+    max-height: 180px;
+  }
+  &__logos {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    img {
+      padding: 25px 30px;
+    }
+  }
+  &__button {
+    text-align: center;
+    margin-top: 43px;
+  }
+}

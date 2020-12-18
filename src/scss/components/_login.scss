@@ -1,0 +1,161 @@
+.login {
+  background-color: $green;
+  height: 100vh;
+  @media (max-width: $tablet-width) {
+    height: 100%;
+  }
+  span {
+    display: none;
+    max-width: 280px;
+  }
+  button {
+    border: none;
+    outline: none;
+    background-color: #5e42a2;
+    padding: 5px 10px;
+    color: $white;
+    margin-top: 15px;
+    font-size: 21px;
+    cursor: pointer;
+    &:disabled {
+      opacity: 0.65;
+    }
+  }
+
+  &__main {
+    background-color: $white;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    min-height: 595px;
+    max-width: 889px;
+    margin: 20px auto 0;
+    border-radius: 30px;
+    @media (max-width: 600px) {
+      padding: 0 20px;
+    }
+  }
+  &__form {
+    width: 50%;
+    min-height: 595px;
+    // padding: 0 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    @media (max-width: $tablet-width) {
+      width: 100%;
+      margin-bottom: 90px;
+    }
+  }
+  &__container {
+    max-width: 300px;
+    margin: 180px auto 0;
+    @media (max-width: $tablet-width) {
+      margin: auto;
+    }
+  }
+
+  &__about {
+    width: 50%;
+    padding: 0 20px;
+    background-color: #5e42a2;
+    min-height: 595px;
+    border-radius: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    flex-direction: column;
+    @media (max-width: $tablet-width) {
+      width: 100%;
+    }
+    p {
+      font-size: 17px;
+      line-height: 26px;
+      max-width: 340px;
+      margin: 35px auto;
+      text-align: center;
+    }
+    h2 {
+      font-size: 63px;
+      font-family: 'Gogol';
+      line-height: 38.5px;
+    }
+  }
+
+  &__input {
+    width: 280px;
+    padding-left: 15px;
+    height: 29px;
+    border-radius: 15px;
+    border: 1px solid #000000;
+    background-color: #ffffff;
+    margin-bottom: 15px;
+    &_small {
+      width: 130px;
+    }
+  }
+  &__checkbox {
+    display: flex;
+    flex-wrap: wrap;
+    p {
+      padding-left: 15px;
+    }
+  }
+
+  &__panel {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 40px;
+    position: absolute;
+    top: 60px;
+    width: 444px;
+    left: 0;
+    @media (max-width: $tablet) {
+      position: unset;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      width: unset;
+    }
+    .active {
+      background-color: #5e42a2;
+      color: $white;
+      cursor: default;
+    }
+    div {
+      padding: 0 7px;
+      cursor: pointer;
+    }
+    h2 {
+      font-family: 'Gogol';
+      font-size: 43px;
+      text-align: center;
+    }
+  }
+
+  &__group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__forgot {
+    margin: 30px 0 20px;
+    cursor: pointer;
+  }
+  &__send {
+    position: absolute;
+  }
+
+  &__misstakes {
+    max-width: 280px;
+    margin-top: 10px;
+    color: red;
+    &_top {
+      margin-top: 35px;
+    }
+  }
+}

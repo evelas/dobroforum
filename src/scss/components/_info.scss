@@ -1,0 +1,47 @@
+.info {
+  padding: 150px 0 60px;
+  bottom: 3px;
+
+  @media (max-width: $desktop) {
+    padding-top: 110px;
+    position: relative;
+  }
+
+  &__button {
+    text-align: center;
+    width: 100%;
+    margin-top: 35px;
+    @media (max-width: $tablet) {
+      margin-top: 0;
+    }
+  }
+
+  background-color: $violet;
+  display: flex;
+  flex-wrap: wrap;
+  &__firstday {
+    border-right: 0.5px solid $white;
+  }
+  &__secondday {
+    border-left: 0.5px solid $white;
+  }
+  &__firstday,
+  &__secondday {
+    width: 50%;
+    @media (max-width: $tabletLandscape) {
+      width: 100%;
+      border: none;
+    }
+    div {
+      text-align: center;
+      margin-bottom: 50px;
+      p {
+        color: $white;
+        font-size: 25px;
+        max-width: 520px;
+        margin: auto;
+        padding: 10px 20px 0;
+      }
+    }
+  }
+}

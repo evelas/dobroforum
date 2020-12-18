@@ -1,0 +1,221 @@
+@import 'variables';
+@import 'fonts';
+@import 'libs/normalize';
+
+@import 'components/all';
+
+// body {
+// }
+html {
+  overflow-x: hidden;
+  // для бегущей анимации
+}
+iframe {
+  @media (max-width: 900px) {
+    width: 650px;
+    height: 430px;
+  }
+  @media (max-width: 680px) {
+    width: 350px;
+    height: 230px;
+  }
+  @media (max-width: 400px) {
+    width: 290px;
+    height: 170px;
+  }
+}
+.wrapper {
+  height: 100%;
+
+  margin: 0 auto;
+
+  max-width: 1400px;
+}
+
+.content {
+  // padding: 40px 0;
+
+  &__title {
+    margin: 35px 0;
+    @media (max-width: 768px) {
+      font-size: 36px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 3vw;
+
+    @media (max-width: 1380px) {
+      grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    @media (max-width: 1090px) {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+    }
+  }
+}
+
+.h1 {
+  color: $white;
+  font-size: 81px;
+  text-align: center;
+  text-transform: uppercase;
+  &_orange {
+    color: #ffce46;
+  }
+  &_green {
+    color: #00b7af;
+  }
+  &_blue {
+    color: #2787f5;
+  }
+  &_violet {
+    color: #6a53dc;
+    white-space: nowrap;
+    @media (max-width: 900px) {
+      white-space: normal;
+    }
+  }
+  &_max {
+    font-size: 98px;
+    @media (max-width: 1280px) {
+      font-size: 61px;
+    }
+  }
+  &_supermax {
+    font-size: 101px;
+  }
+  &_nowrap {
+    white-space: nowrap;
+    @media (max-width: 900px) {
+      white-space: normal;
+    }
+  }
+  @media (max-width: 1600px) {
+    font-size: 68px;
+  }
+  @media (max-width: 1280px) {
+    font-size: 55px;
+  }
+  @media (max-width: 900px) {
+    font-size: 36px;
+  }
+  @media (max-width: 476px) {
+    font-size: 26px;
+    padding: 0 10px;
+  }
+}
+
+.h2 {
+  font-family: 'Gogol';
+  color: #ffce46;
+  text-align: center;
+  font-size: 96px;
+  transform: rotate(-4deg);
+  position: relative;
+  bottom: 52px;
+  &_white {
+    color: $white;
+  }
+  &_green {
+    color: #00b7af;
+  }
+  &_violet {
+    color: #6a53dc;
+  }
+  &_small {
+    font-size: 64px;
+    bottom: 45px;
+  }
+  &_bottom {
+    bottom: 50px;
+  }
+  &_bot {
+    bottom: 57px;
+  }
+  &_top {
+    bottom: 16px;
+  }
+  &_degree {
+    transform: rotate(-2deg);
+    max-width: 700px;
+    margin: auto;
+  }
+  &_degree2 {
+    transform: rotate(-2deg);
+    bottom: 30px;
+  }
+  @media (max-width: 1600px) {
+    font-size: 71px;
+  }
+  @media (max-width: 1280px) {
+    font-size: 43px;
+    bottom: 40px;
+  }
+  @media (max-width: 900px) {
+    font-size: 31px;
+    bottom: 20px;
+    width: 90%;
+    margin: auto;
+  }
+  @media (max-width: 476px) {
+  }
+}
+
+.h3 {
+  text-transform: uppercase;
+  font-size: 61px;
+  color: #ffce46;
+  text-align: center;
+  @media (max-width: 768px) {
+    font-size: 36px;
+  }
+}
+
+.h4 {
+  color: #00b7af;
+  font-weight: bold;
+  font-size: 50px;
+  @media (max-width: 768px) {
+    font-size: 28px;
+  }
+}
+img {
+  @media (max-width: 768px) {
+    transform: none !important;
+  }
+}
+button {
+  cursor: pointer;
+}
+button:disabled {
+  opacity: 0.7;
+  cursor: default;
+}
+.back_to_top {
+  position: fixed;
+  bottom: 80px;
+  right: 40px;
+  z-index: 99999;
+  width: 30px;
+  height: 35px;
+
+  cursor: pointer;
+
+  display: none;
+}
+
+.back_to_top-show {
+  display: block;
+}
+
+.timer {
+  margin-top: 10px;
+}

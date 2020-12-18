@@ -1,0 +1,40 @@
+@font-face {
+  font-family: 'Gogol';
+  src: url('./fonts/Gogol.otf');
+  src: local('./fonts/Gogol'), local('Gogol'), url('./fonts/Gogol.otf') format('opentype'),
+    url('./fonts/Gogol.woff') format('woff'), url('./fonts/Gogol.woff2') format('woff2'),
+    url('./fonts/Gogol.eot?#iefix') format('embedded-opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/MyriadProBold.eot');
+  src: local('./fonts/MyriadProBold'), local('MyriadProBold'),
+    url('./fonts/MyriadProBold.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/MyriadProBold.woff') format('woff'),
+    url('./fonts/MyriadProBold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Myriad Pro';
+  src: url('./fonts/MyriadProRegular.eot');
+  src: local('./fonts/MyriadProRegular'), local('MyriadProRegular'),
+    url('./fonts/MyriadProRegular.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/MyriadProRegular.woff') format('woff'),
+    url('./fonts/MyriadProRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'trattello';
+  src: url('./fonts/trattello.eot');
+  src: local('./fonts/trattello'), local('trattello'),
+    url('./fonts/trattello.eot?#iefix') format('embedded-opentype'),
+    url('./fonts/trattello.woff') format('woff'), url('./fonts/trattello.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
