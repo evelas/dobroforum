@@ -12,7 +12,6 @@ const App = withRouter(() => {
       <Route path="/вход" component={Login} />
       <Route path="/профиль" component={Profile} />
       <Route path="/пользователь/:userId" component={UsersProfile} />
-
       <Route path="/админ" component={Admin} />
       <Route path="*" component={NotFound} />
     </Switch>
