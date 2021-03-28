@@ -1,18 +1,18 @@
 // unused in this version
 
-export enum resultCode {
+export enum resultCodeEnum {
   // main
-  success = 0,
-  emailOrPasswordIsWrong = 1,
-  accountIsNotActivated = 2,
-  emailIsExists = 3,
-  emailNotFound = 4,
-  toMuchAttempt = 10,
+  Success = 0,
+  EmailOrPasswordIsWrong = 1,
+  AccountIsNotActivated = 2,
+  EmailIsExists = 3,
+  EmailNotFound = 4,
+  ToMuchAttempt = 10,
 
   // quiz
-  quizAnswerIsWrong = 30,
-  quizAnswerIsRight = 31,
+  QuizAnswerIsWrong = 30,
+  QuizAnswerIsRight = 31,
 
   // admin
-  userNotFound = 6,
+  UserNotFound = 6,
 }

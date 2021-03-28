@@ -2,6 +2,7 @@ import { takeEvery, put, call, delay } from 'redux-saga/effects';
 import { authAPI } from '../../api/userAPI';
 import { authActions, TypesAuth } from '../actions';
 import { stopSubmit } from 'redux-form';
+import { resultCodeEnum } from '../../Enum/resultCode';
 
 // login
 async function getLogin(login, password, forgotMe) {
@@ -17,15 +18,15 @@ function* workerGetLogin(action) {
       action.payload.password,
       action.payload.forgotMe,
     );
-    if (data.resultCode === 0) {
+    if (data.resultCode === resultCodeEnum.Success) {
       // запускаем auth Saga
       yield put(authActions.loadUserData());
     } else {
-      if (data.resultCode === 10) {
+      if (data.resultCode === resultCodeEnum.ToMuchAttempt) {
         // слишком много попыток - блокируем кнопку
         yield put(authActions.setTryTimeButton(true));
       }
-      if (data.resultCode === 2) {
+      if (data.resultCode === resultCodeEnum.AccountIsNotActivated) {
         // TODO: Аккаунт не активирован
       }
       let message = data.message;
@@ -50,7 +51,7 @@ async function getAuthUserData() {
 function* workerGetAuth() {
   try {
     const data = yield call(getAuthUserData);
-    if (data.resultCode === 0) {
+    if (data.resultCode === resultCodeEnum.Success) {
       yield put(authActions.toggleIsFetching(true));
       yield put(authActions.setAuthUserData(data.items, true));
       yield delay(1500);
@@ -74,7 +75,7 @@ async function getLogout() {
 function* workerGetLogout() {
   try {
     const data = yield call(getLogout);
-    if (data.resultCode === 0) {
+    if (data.resultCode === resultCodeEnum.Success) {
       yield put(authActions.setAuthUserData(null, null, null, false));
     }
   } catch (e) {

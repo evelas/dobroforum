@@ -2,7 +2,9 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required } from '../helpers/validators/validators';
-import { InputRegistration } from '../components/common/formsControls/formsControls';
+import {
+  InputRegistration,
+} from '../components/common/formsControls/formsControls';
 import { rememberPasswordActions } from '../redux/actions';
 import Timer from '../components/common/Timer2';
 

@@ -3,7 +3,9 @@ import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 import { required, emailIsRequired } from '../helpers/validators/validators';
-import { InputRegistration } from '../components/common/formsControls/formsControls';
+import {
+  InputRegistration,
+} from '../components/common/formsControls/formsControls';
 import { authActions } from '../redux/actions';
 import Timer from '../components/common/Timer2';
 import Header from '../components/Header';
@@ -38,7 +40,8 @@ const LoginForm = (props) => {
           placeholder="Пароль"
         />
         <div className="login__checkbox">
-          <Field name="forgotMe" component="input" type="checkbox" /> <p>Не запоминать</p>
+          <Field name="forgotMe" component="input" type="checkbox" />
+          <p>Не запоминать</p>
         </div>
 
         <div>
@@ -77,7 +80,11 @@ const Login = () => {
   const { isAuth, isTryTime } = useSelector(({ auth }) => auth);
 
   const getLoginData = (formData) => {
-    dispatch(authActions.setLogin(formData.login, formData.password, formData.forgotMe));
+    dispatch(authActions.setLogin(
+        formData.login,
+        formData.password,
+        formData.forgotMe),
+    );
   };
   const handleLogin = () => {
     setVisiable(true);
@@ -120,12 +127,13 @@ const Login = () => {
           <div className="login__about">
             <h2>Важно!</h2>
             <p>
-              Дорогой друг, чтобы воспользоваться всем доступным онлайн-интерактивом Форума, тебе
-              необходимо зарегистрироваться и авторизоваться на сайте. Сделав это, ты сможешь
-              принять участие в QR-викторине и выиграть памятные подарки, проголосовать за
-              номинантов, получив при этом баллы для памятных подарков, ежегодной премии “ТОП 25.
-              Самые добрые люди Петербурга”, а также получить электронный сертификат участника
-              Форума.
+              Дорогой друг, чтобы воспользоваться всем доступным
+              онлайн-интерактивом Форума, тебе необходимо зарегистрироваться
+              и авторизоваться на сайте. Сделав это, ты сможешь принять участие
+              в QR-викторине и выиграть памятные подарки, проголосовать за
+              номинантов, получив при этом баллы для памятных подарков,
+              ежегодной премии “ТОП 25. Самые добрые люди Петербурга”,
+              а также получить электронный сертификат участника Форума.
             </p>
           </div>
         </div>

@@ -1,8 +1,14 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
-import { required, emailIsRequired, passwordsMatch } from '../helpers/validators/validators';
-import { InputRegistration } from '../components/common/formsControls/formsControls';
+import {
+  required,
+  emailIsRequired,
+  passwordsMatch,
+} from '../helpers/validators/validators';
+import {
+  InputRegistration,
+} from '../components/common/formsControls/formsControls';
 import { registrationActions } from '../redux/actions';
 
 const registrationForm = (props) => {
@@ -72,7 +78,8 @@ const registrationForm = (props) => {
         )}
         {props.submitSucceeded && (
           <div className="login__misstakes">
-            Вам на почту отправлено письмо с активацией аккаунта (проверьте спам).
+            Вам на почту отправлено письмо
+            с активацией аккаунта (проверьте спам).
           </div>
         )}
       </div>

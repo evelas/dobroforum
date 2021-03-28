@@ -2,19 +2,19 @@ import React from 'react';
 import classNames from 'classnames';
 
 export const Input = ({ input, meta: { touched, error }, ...props }) => {
-  let hasError = touched && error;
+  const hasError = touched && error;
   return (
     <div>
       <input {...input} {...props} />
-
       {hasError && <span> {error}</span>}
       <span></span>
     </div>
   );
 };
 
-export const InputRegistration = ({ input, meta: { touched, error }, ...props }) => {
-  let hasError = touched && error;
+export const InputRegistration = ({
+  input, meta: { touched, error }, ...props }) => {
+  const hasError = touched && error;
   return (
     <div
       className={classNames('registration__input', {
@@ -24,14 +24,13 @@ export const InputRegistration = ({ input, meta: { touched, error }, ...props })
           (touched && hasError === 'Пароли не совпадают'),
       })}>
       <input {...input} {...props} />
-
       {hasError && <span> {error}</span>}
     </div>
   );
 };
 
 export const Textarea = ({ input, meta: { touched, error }, ...props }) => {
-  let hasError = touched && error;
+  const hasError = touched && error;
   return (
     <div>
       <div>

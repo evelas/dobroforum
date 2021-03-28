@@ -2,6 +2,7 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import { quizAPI } from '../../api/userAPI';
 import { TypesQuiz, authActions } from '../actions';
 import { stopSubmit } from 'redux-form';
+import { resultCodeEnum } from '../../Enum/resultCode';
 
 // quiz
 async function getQuiz(email, answer) {
@@ -12,7 +13,7 @@ async function getQuiz(email, answer) {
 function* workerGetQuiz(action) {
   try {
     const data = yield call(getQuiz, action.payload.email, action.payload.answer);
-    if (data.resultCode === 31) {
+    if (data.resultCode === resultCodeEnum.QuizAnswerIsRight) {
       // TODO: логика после
       yield put(authActions.loadUserData());
       let message = 'Вы ответили правильно!';

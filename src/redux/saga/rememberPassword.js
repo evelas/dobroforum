@@ -2,6 +2,7 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import { regAPI } from '../../api/userAPI';
 import { TypesRememberPassword, rememberPasswordActions } from '../actions';
 import { stopSubmit } from 'redux-form';
+import { resultCodeEnum } from '../../Enum/resultCode';
 
 // Remember Password
 async function getRememberPassword(formData) {
@@ -12,7 +13,7 @@ async function getRememberPassword(formData) {
 function* workerGetRememberPassword(action) {
   try {
     const data = yield call(getRememberPassword, action.payload);
-    if (data.resultCode === 0) {
+    if (data.resultCode === resultCodeEnum.Success) {
       // блокируем кнопку
       yield put(rememberPasswordActions.setTryTimeButton(true));
     } else {

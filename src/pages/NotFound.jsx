@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
 function NotFound() {
-    return (
-        <div>
-            404 Ошибка
-        </div>
-    )
+  return (
+    <div>
+        404 Ошибка
+    </div>
+  );
 }
 
-export default NotFound
+export default NotFound;

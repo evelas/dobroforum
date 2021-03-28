@@ -2,6 +2,7 @@ import { takeEvery, put, call } from 'redux-saga/effects';
 import { regAPI } from '../../api/userAPI';
 import { TypesRegistration } from '../actions/registration';
 import { stopSubmit } from 'redux-form';
+import { resultCodeEnum } from '../../Enum/resultCode';
 
 // Registation
 async function getRegistation(formData) {
@@ -12,7 +13,7 @@ async function getRegistation(formData) {
 function* workerGetRegistation(action) {
   try {
     const data = yield call(getRegistation, action.payload);
-    if (data.resultCode === 0) {
+    if (data.resultCode === resultCodeEnum.Success) {
       // TODO: Логика после регистрации
     } else {
       let message = data.message;
