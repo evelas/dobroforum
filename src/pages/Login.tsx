@@ -16,7 +16,7 @@ import { AppStateType } from '../redux/reducers';
 import { LoginFormValuesType } from '../types/types';
 
 type LoginFormOwnProps = {
-  isDisabled: boolean
+  isDisabled: boolean;
 }
 
 const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps> = (props) => {

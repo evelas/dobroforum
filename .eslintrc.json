@@ -1,16 +1,23 @@
 {
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
     "es6": true,
     "browser": true,
     "node": true,
     "jest": true
   },
+  "parserOptions":  {
+    "ecmaVersion":  2018,  // Allows for the parsing of modern ECMAScript features
+    "sourceType":  "module",
+    "ecmaFeatures":  {
+      "jsx":  true  // Allows for the parsing of JSX
+    }
+  },
   "rules": {
     "no-console": "off",
     "require-jsdoc": "off",
     "operator-linebreak": "off",
-    // Mandatory use of consistent spaces in braces
+    "@typescript-eslint/explicit-function-return-type": "off",
     "object-curly-spacing": [
       2,
       "always",
@@ -19,5 +26,10 @@
       }
     ]
   },
-  "extends": ["react-app"]
+  "settings":  {
+    "react":  {
+      "version":  "detect"  // Tells eslint-plugin-react to automatically detect the version of React to use
+    }
+  },
+  "extends": ["react-app", "plugin:@typescript-eslint/recommended"]
 }
