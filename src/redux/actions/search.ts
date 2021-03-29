@@ -1,4 +1,4 @@
-import { ProfileType } from '../../Types/types';
+import { ProfileType } from '../../types/types';
 
 export const TypesSearch = {
   SET_SEARCH_PRODUCT: '/reducers/search/SET_SEARCH_PRODUCT' as const,

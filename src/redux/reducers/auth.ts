@@ -1,4 +1,4 @@
-import { ProfileType } from '../../Types/types';
+import { ProfileType } from '../../types/types';
 import { InferActionsTypes } from './index';
 import { authActions, TypesAuth } from '../actions';
 

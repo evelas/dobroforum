@@ -1,5 +1,5 @@
 import { searchActions, TypesSearch } from './../actions';
-import { ProfileType } from './../../Types/types';
+import { ProfileType } from '../../types/types';
 import { InferActionsTypes } from './index';
 
 const initialState = {

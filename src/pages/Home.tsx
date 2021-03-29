@@ -43,7 +43,7 @@ import prize2 from '../assets/img/prize2.png';
 import prize3 from '../assets/img/prize3.png';
 import prize4 from '../assets/img/prize4.png';
 
-function Home() {
+const Home: React.FC = () => {
   return (
     <div className="content">
       <div className="welcome">

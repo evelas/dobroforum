@@ -9,3 +9,9 @@ export type ProfileType = {
 export type RememberPasswordType = {
   login: string;
 };
+
+export type LoginFormValuesType = {
+  login: string
+  forgotMe: boolean
+  password: string
+}

@@ -1,4 +1,4 @@
-import { ProfileType } from '../../Types/types';
+import { ProfileType } from '../../types/types';
 
 export const TypesSearchUser = {
   SET_USER: '/reducers/searchUser/SET_USER' as const,

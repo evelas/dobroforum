@@ -1,4 +1,4 @@
-import { ProfileType } from '../../Types/types';
+import { ProfileType } from '../../types/types';
 
 export const TypesAuth = {
   SET_USER_DATA: '/reducers/auth/SET_USER_DATA' as const,

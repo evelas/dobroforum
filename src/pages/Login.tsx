@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { InjectedFormProps, Field, reduxForm } from 'redux-form';
 import { required, emailIsRequired } from '../helpers/validators/validators';
 import {
   InputRegistration,
@@ -12,8 +12,14 @@ import Header from '../components/Header';
 import classnames from 'classnames';
 import RememberPassword from './RememberPassword';
 import Registration from './Registration';
+import { AppStateType } from '../redux/reducers';
+import { LoginFormValuesType } from '../types/types';
 
-const LoginForm = (props) => {
+type LoginFormOwnProps = {
+  isDisabled: boolean
+}
+
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps> = (props) => {
   const [visiable, setVisiable] = React.useState(false);
   const handleVisible = () => {
     setVisiable(true);
@@ -69,21 +75,26 @@ const LoginForm = (props) => {
   );
 };
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({
   form: 'login',
 })(LoginForm);
+ 
+ 
+// type LoginFormValuesTypeKeys = GetStringKeys<LoginFormValuesType>
 
-const Login = () => {
+const Login: React.FC = () => {
   const [visiable, setVisiable] = React.useState(true);
 
   const dispatch = useDispatch();
-  const { isAuth, isTryTime } = useSelector(({ auth }) => auth);
+ 
+  const isAuth = useSelector((state: AppStateType) => state.auth.isAuth);
+  const isTryTime = useSelector((state: AppStateType) => state.auth.isTryTime);
 
-  const getLoginData = (formData) => {
+  const getLoginData = (formData: LoginFormValuesType) => {
     dispatch(authActions.setLogin(
-        formData.login,
-        formData.password,
-        formData.forgotMe),
+      formData.login,
+      formData.password,
+      formData.forgotMe),
     );
   };
   const handleLogin = () => {
