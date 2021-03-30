@@ -4,6 +4,9 @@ export type ProfileType = {
   fullName: string;
   birthday: number;
   phone: number;
+  cloneVk: string;
+  vk: string;
+  ball: number;
 };
 
 export type RememberPasswordType = {
@@ -11,7 +14,12 @@ export type RememberPasswordType = {
 };
 
 export type LoginFormValuesType = {
-  login: string
-  forgotMe: boolean
-  password: string
+  login: string;
+  forgotMe: boolean;
+  password: string;
+}
+
+
+export type LoginFormOwnProps = {
+  isDisabled: boolean;
 }

@@ -5,7 +5,7 @@ import { authActions, TypesAuth } from '../actions';
 type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof authActions>;
 
-let initialState = {
+const initialState = {
   profile: null as ProfileType | null,
   isAuth: false,
   isTryTime: false,

@@ -13,11 +13,9 @@ import classnames from 'classnames';
 import RememberPassword from './RememberPassword';
 import Registration from './Registration';
 import { AppStateType } from '../redux/reducers';
-import { LoginFormValuesType } from '../types/types';
+import { LoginFormOwnProps, LoginFormValuesType } from '../types/types';
 
-type LoginFormOwnProps = {
-  isDisabled: boolean;
-}
+
 
 const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps> = (props) => {
   const [visiable, setVisiable] = React.useState(false);

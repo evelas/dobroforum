@@ -5,9 +5,10 @@ import vk from '../../assets/img/votePage/vk2.png';
 
 import { Redirect } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { AppStateType } from '../../redux/reducers';
 
-function Vote() {
-  const { isAuth } = useSelector(({ auth }) => auth);
+const Vote: React.FC = () => {
+  const isAuth = useSelector((state: AppStateType) => state.auth.isAuth);
 
   if (!isAuth) {
     return <Redirect to="/вход" />;
@@ -31,7 +32,7 @@ function Vote() {
             <h1>НОМИНАЦИИ И НОМИНАНТЫ </h1>
           </div>
 
-          <div class="vote__oauthmain">
+          <div className="vote__oauthmain">
             <a
               href="https://oauth.vk.com/authorize?client_id=7629856&display=page&redirect_uri=https://xn--90afzgbamc1ah.xn--p1ai/vote/vk.php&response_type=code"
               target="_blank"

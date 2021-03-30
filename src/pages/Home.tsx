@@ -14,7 +14,6 @@ import cloud2 from '../assets/img/cloud2.png';
 import imgFooter from '../assets/img/footer10.png';
 import inst from '../assets/img/inst.png';
 import vkFooter from '../assets/img/vkfooter.png';
-import awesome from '../assets/img/awesome.png';
 
 import speaker4 from '../assets/img/speakers/speaker4.jpg';
 import speaker5 from '../assets/img/speakers/speaker5.jpg';
@@ -58,9 +57,7 @@ const Home: React.FC = () => {
             даже онлайн
           </h2>
         </div>
-        <div className="welcome__footer">
-          <img src={awesome} alt="footer" />
-        </div>
+      
       </div>
       <div className="about" id={`#форум`}>
         <div className="wrapper">

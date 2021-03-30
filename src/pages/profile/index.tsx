@@ -11,10 +11,29 @@ import vasilchenko from '../../assets/img/votePage/vasilchenko.png';
 import tretyakova from '../../assets/img/votePage/tretyakova.png';
 import classnames from 'classnames';
 import Person from './Person';
+import { AppStateType } from '../../redux/reducers';
 
-const youngSoulPersons = [
+export type YoungSoulPersonsType = {
+  id: string;
+  name: string;
+  about: string;
+  reason: string;
+  img: JSX.Element;
+};
+const testOnh: YoungSoulPersonsType = {
+  id: '0',
+  name: 'Корнева Зинаида',
+  about: 'Инициатива ветерана Зинаиды Корневой',
+  reason:
+    `за активную поддержку семей врачей во время пандемии и организацию
+    процесса взаимпопомощии приема пожертвований, в результате которого
+    на 31 октября было распределено 4 560 000 руб. между 152 семьями врачей`,
+  img: <img src={korneva} alt="korneva" />,
+}
+console.log(testOnh)
+const youngSoulPersons: YoungSoulPersonsType[]  = [
   {
-    id: 0,
+    id: '0',
     name: 'Корнева Зинаида',
     about: 'Инициатива ветерана Зинаиды Корневой',
     reason:
@@ -24,7 +43,7 @@ const youngSoulPersons = [
     img: <img src={korneva} alt="korneva" />,
   },
   {
-    id: 1,
+    id: '1',
     name: 'Васильченко Ольга',
     about: 'Волонтерский Центр "Серебряные волонтеры Санкт-Петербурга"',
     reason:
@@ -34,7 +53,7 @@ const youngSoulPersons = [
     img: <img src={vasilchenko} alt="vasilchenko" />,
   },
   {
-    id: 2,
+    id: '2',
     name: 'Третьякова Людмила',
     about: 'АНО “Серебряный Возраст Санкт-Петербург”',
     reason:
@@ -45,9 +64,11 @@ const youngSoulPersons = [
   },
 ];
 
-const Profile = (props) => {
+const Profile: React.FC = () => {
   const dispatch = useDispatch();
-  const { isAuth, profile } = useSelector(({ auth }) => auth);
+ 
+  const isAuth = useSelector((state: AppStateType) => state.auth.isAuth);
+  const profile = useSelector((state: AppStateType) => state.auth.profile);
 
   React.useEffect(() => {
     dispatch(authActions.loadUserData());
@@ -58,21 +79,29 @@ const Profile = (props) => {
   //   dispatch(authActions.setLogout());
   // };
 
-  const [activeId, setActiveId] = React.useState();
+  const [activeId, setActiveId] = React.useState<number>();
 
-  const handleClick = (id) => (e) => {
-    const personId = parseInt(e.target.id);
+  const handleClick = () => (e: React.MouseEvent<HTMLElement>) => {
+    // eslint-disable-next-line
+    const target = e.target as any;
+ 
+    const personId: number = parseInt(target.id);
     setActiveId(personId);
-    [...e.target.closest('.section__nominee').querySelectorAll('h5')].map(
-        (i) => (i.innerHTML = 'Оставить свой голос'),
-    );
-    e.target
+    
+ 
+    [...target.closest('.section__nominee').querySelectorAll('h5')].forEach(el => el.innerHTML = 'Оставить свой голос');
+  
+    target
         .nextElementSibling
         .querySelector('h5')
         .innerHTML = 'Ваш голос учтен';
+      
   };
 
   if (!isAuth) {
+    return <Redirect to="/вход" />;
+  }
+  if(profile === null) {
     return <Redirect to="/вход" />;
   }
   return (
@@ -129,9 +158,9 @@ const Profile = (props) => {
                 <Person
                   key={`${item.name}_${index}`}
                   content={item}
-                  onClick={handleClick(item.id)}
+                  onClick={handleClick()}
                   classNameActive={classnames('section__photo', {
-                    active: item.id === activeId,
+                    active: parseInt(item.id) === activeId,
                   })}
                 />
               ))}
