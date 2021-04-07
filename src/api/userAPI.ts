@@ -1,3 +1,4 @@
+import { ProfileType, RememberPasswordType } from './../types/types';
 import Axios from 'axios';
 
 const instansAxios = Axios.create({
@@ -5,12 +6,13 @@ const instansAxios = Axios.create({
   baseURL: 'https://xn--90afzgbamc1ah.xn--p1ai/RESTful/',
 });
 
+
 export const authAPI = {
   getAuthData() {
     return instansAxios.get(`auth`);
   },
 
-  login(login, password, forgotMe) {
+  login(login: string, password: string, forgotMe: boolean) {
     return instansAxios.post(`login`, { login, password, forgotMe });
   },
   logout() {
@@ -18,28 +20,28 @@ export const authAPI = {
   },
 };
 export const regAPI = {
-  registration(formData) {
+  registration(formData: ProfileType) {
     return instansAxios.post(`registration`, formData);
   },
-  rememberPassword(formData) {
+  rememberPassword(formData: RememberPasswordType) {
     return instansAxios.post(`rememberPassword`, formData);
   },
 };
 
 export const quizAPI = {
-  quiz(email, answer) {
+  quiz(email: string, answer: string) {
     return instansAxios.post(`quiz`, { email, answer });
   },
 };
 
 export const adminAPI = {
-  getSearch(text) {
+  getSearch(text: string) {
     return instansAxios.get(`search?text=${text}`);
   },
-  getOneUser(id) {
+  getOneUser(id: number) {
     return instansAxios.get(`profile/${id}`);
   },
-  editProfile(formData, userId) {
+  editProfile(formData: ProfileType, userId: number) {
     return instansAxios.patch(`profile/${userId}`, formData);
   },
 };
