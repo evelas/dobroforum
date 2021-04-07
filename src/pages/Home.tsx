@@ -781,7 +781,7 @@ const Home: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className="quiz__text">
+      <div className="quiz__text"  id={`#викторина`}>
         <p>
           Чтобы получить памятные подарки от команды организаторов
           “Доброфорум 9.0”, тебе нужно

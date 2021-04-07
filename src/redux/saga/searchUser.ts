@@ -1,15 +1,16 @@
+import { PayloadSearchUserIdType, ProfileType, PayloadSaveEditType } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { adminAPI } from '../../api/userAPI';
 import { searchUserActions, TypesSearchUser } from '../actions';
 
-async function getOneUser(id) {
+async function getOneUser(id: number) {
   const response = await adminAPI.getOneUser(id);
   return await response.data;
 }
 
-function* workerGetOneUser(action) {
+function* workerGetOneUser(action: PayloadSearchUserIdType) {
   try {
-    const data = yield call(getOneUser, action.payload);
+    const data: ProfileType = yield call(getOneUser, action.payload);
     yield put(searchUserActions.isLoadedAction(false));
     yield put(searchUserActions.setUser(data));
     yield put(searchUserActions.isLoadedAction(true));
@@ -19,18 +20,23 @@ function* workerGetOneUser(action) {
 }
 
 export function* watchOneUser() {
-  yield takeEvery(TypesSearchUser.LOAD_USER, workerGetOneUser);
+  // eslint-disable-next-line
+  yield takeEvery(TypesSearchUser.LOAD_USER as any, workerGetOneUser);
 }
 
 // Сохранение профиля
-async function editProfile(formData, userId) {
+async function editProfile(formData: ProfileType, userId: number) {
   const response = await adminAPI.editProfile(formData, userId);
   return await response.data;
 }
 
-function* workerEditProfile(action) {
+function* workerEditProfile(action: PayloadSaveEditType) {
   try {
-    const data = yield call(editProfile, action.payload.formData, action.payload.userId);
+    const data: ProfileType = yield call(
+      editProfile,
+      action.payload.formData,
+      action.payload.userId
+    );
     console.log(data);
     //yield put(searchUserActions.saveProfile(data));
   } catch (e) {
@@ -38,5 +44,6 @@ function* workerEditProfile(action) {
   }
 }
 export function* watchEditProfile() {
-  yield takeEvery(TypesSearchUser.SAVE_PROFILE, workerEditProfile);
+  // eslint-disable-next-line
+  yield takeEvery(TypesSearchUser.SAVE_PROFILE as any, workerEditProfile);
 }
