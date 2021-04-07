@@ -11,17 +11,16 @@ const persistConfig = {
   storage,
 };
 const persistedReducer = persistReducer(persistConfig, reducers);
-// @ts-ignore
+ 
 //const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const saga = createSagaMiddleware();
 
 const configureStore = () => {
   const store = createStore(persistedReducer, applyMiddleware(thunkMiddleware, saga));
-  // @ts-ignore
-  window.store = store;
-  // @ts-ignore
-
+ 
+  // window.store = store;  // @ts-ignore
+ 
   saga.run(rootSaga);
   const persistor = persistStore(store);
   return { store, persistor };

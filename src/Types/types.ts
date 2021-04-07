@@ -3,6 +3,7 @@ export type ProfileType = {
   email: string;
   fullName: string;
   birthday: number;
+  isAdmin?: false;
   phone: number;
   cloneVk: string;
   vk: string;
@@ -19,7 +20,25 @@ export type LoginFormValuesType = {
   password: string;
 }
 
-
 export type LoginFormOwnProps = {
   isDisabled: boolean;
+}
+
+// sagas
+
+export type ServerResponse = {
+  resultCode: number;
+  items: ProfileType | null;
+  message?: string;
+}
+
+export type ActionType = {
+  login: string;
+  password: string;
+  forgotMe: boolean;
+}
+
+export type PayloadType = {
+  payload: ActionType;
+
 }
