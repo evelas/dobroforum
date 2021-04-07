@@ -19,6 +19,5 @@ function* workerGetSearch(action: PayloadSearchType) {
 }
 
 export function* watchSearchProducts() {
-  // eslint-disable-next-line
-  yield takeEvery(TypesSearch.LOAD_SEARCH as any, workerGetSearch);
+  yield takeEvery(TypesSearch.LOAD_SEARCH as never, workerGetSearch);
 }

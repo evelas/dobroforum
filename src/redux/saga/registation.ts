@@ -27,6 +27,5 @@ function* workerGetRegistation(action: PayloadRegType) {
 }
 
 export function* watchGetRegistation() {
-  // eslint-disable-next-line
-  yield takeEvery(TypesRegistration.SET_REGISTRATION as any, workerGetRegistation);
+  yield takeEvery(TypesRegistration.SET_REGISTRATION as never, workerGetRegistation);
 }

@@ -9,7 +9,8 @@ async function getLogin(login: string, password: string, forgotMe: boolean) {
   const response = await authAPI.login(login, password, forgotMe);
   return await response.data;
 }
-
+// 1 параметр генератора StrictEffect
+// Интерфейс с any payload / type
 function* workerGetLogin(action: PayloadType): Generator<Effects.StrictEffect, void, never> {
   try {
     const data: ServerResponse = yield Effects.call(
@@ -39,8 +40,7 @@ function* workerGetLogin(action: PayloadType): Generator<Effects.StrictEffect, v
 }
 
 export function* watchGetLogin(): Generator {
-  // eslint-disable-next-line
-  yield Effects.takeEvery(TypesAuth.SET_LOGIN as any, workerGetLogin);
+  yield Effects.takeEvery(TypesAuth.SET_LOGIN as never, workerGetLogin);
 }
 
 // Auth

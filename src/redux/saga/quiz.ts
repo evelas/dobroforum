@@ -37,6 +37,5 @@ function* workerGetQuiz(action: PayloadQuizType): Generator<Effects.StrictEffect
 }
 
 export function* watchGetQuiz() {
-  // eslint-disable-next-line
-  yield Effects.takeEvery(TypesQuiz.SET_QUIZ as any, workerGetQuiz);
+  yield Effects.takeEvery(TypesQuiz.SET_QUIZ as never, workerGetQuiz);
 }

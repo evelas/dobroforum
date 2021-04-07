@@ -31,6 +31,5 @@ function* workerGetRememberPassword(action: PayloadRemType) {
 }
 
 export function* watchGetRememberPassword() {
-  // eslint-disable-next-line
-  yield takeEvery(TypesRememberPassword.SET_REMEMBER_PASSWORD as any, workerGetRememberPassword);
+  yield takeEvery(TypesRememberPassword.SET_REMEMBER_PASSWORD as never, workerGetRememberPassword);
 }

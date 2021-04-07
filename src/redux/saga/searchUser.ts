@@ -44,6 +44,5 @@ function* workerEditProfile(action: PayloadSaveEditType) {
   }
 }
 export function* watchEditProfile() {
-  // eslint-disable-next-line
-  yield takeEvery(TypesSearchUser.SAVE_PROFILE as any, workerEditProfile);
+  yield takeEvery(TypesSearchUser.SAVE_PROFILE as never, workerEditProfile);
 }
