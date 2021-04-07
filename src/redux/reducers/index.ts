@@ -22,7 +22,7 @@ export type AppStateType = ReturnType<RootReducerType>;
 // export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<
 //   PropsType<T>
 // >;
-
+// eslint-disable-next-line
 export type InferActionsTypes<T> = T extends { [keys: string]: (...args: any[]) => infer U }
   ? U
   : never;

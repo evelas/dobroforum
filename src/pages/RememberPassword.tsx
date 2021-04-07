@@ -1,14 +1,16 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { InjectedFormProps, Field, reduxForm } from 'redux-form';
 import { required } from '../helpers/validators/validators';
 import {
   InputRegistration,
 } from '../components/common/formsControls/formsControls';
 import { rememberPasswordActions } from '../redux/actions';
 import Timer from '../components/common/Timer2';
+import { AppStateType } from '../redux/reducers';
+import { LoginFormOwnProps, RememberPasswordType } from '../types/types';
 
-const rememberForm = (props) => {
+const rememberForm: React.FC<InjectedFormProps<RememberPasswordType, LoginFormOwnProps> & LoginFormOwnProps> = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className="login__send">
       <div>
@@ -40,15 +42,16 @@ const rememberForm = (props) => {
   );
 };
 
-const RememberReduxForm = reduxForm({
+const RememberReduxForm = reduxForm<RememberPasswordType, LoginFormOwnProps>({
   form: 'rememberPassword',
 })(rememberForm);
 
 function RememberPassword() {
   const dispatch = useDispatch();
-  const { isTryTime } = useSelector(({ rememberPassword }) => rememberPassword);
+  // const { isTryTime } = useSelector(({ rememberPassword }) => rememberPassword);
+  const isTryTime = useSelector((state: AppStateType) => state.rememberPassword.isTryTime);
 
-  const setNewPassword = (formData) => {
+  const setNewPassword = (formData: RememberPasswordType) => {
     dispatch(rememberPasswordActions.setRememberPassword(formData));
   };
 

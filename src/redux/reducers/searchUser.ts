@@ -1,5 +1,5 @@
 import { InferActionsTypes } from '.';
-import { ProfileType } from '../../Types/types';
+import { ProfileType } from '../../types/types';
 import { searchUserActions, TypesSearchUser } from '../actions/searchUser';
 
 type InitialStateType = typeof initialState;

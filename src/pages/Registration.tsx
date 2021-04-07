@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { Field, reduxForm } from 'redux-form';
+import { InjectedFormProps, Field, reduxForm } from 'redux-form';
 import {
   required,
   emailIsRequired,
@@ -10,8 +10,9 @@ import {
   InputRegistration,
 } from '../components/common/formsControls/formsControls';
 import { registrationActions } from '../redux/actions';
+import { ProfileType } from '../types/types';
 
-const registrationForm = (props) => {
+const registrationForm: React.FC<InjectedFormProps<ProfileType>> = (props) => {
   return (
     <form onSubmit={props.handleSubmit} className="login__container">
       <Field
@@ -87,13 +88,13 @@ const registrationForm = (props) => {
   );
 };
 
-const RegReduxForm = reduxForm({
+const RegReduxForm = reduxForm<ProfileType>({
   form: 'registration',
 })(registrationForm);
 
-const Registration = (props) => {
+const Registration = () => {
   const dispatch = useDispatch();
-  const addUser = (formData) => {
+  const addUser = (formData: ProfileType) => {
     dispatch(registrationActions.setRegistation(formData));
   };
 

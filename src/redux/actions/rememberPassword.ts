@@ -1,4 +1,4 @@
-import { RememberPasswordType } from '../../Types/types';
+import { RememberPasswordType } from '../../types/types';
 
 export const TypesRememberPassword = {
   SET_REMEMBER_PASSWORD: '/reducers/rememberPassword/SET_REMEMBER_PASSWORD' as const,

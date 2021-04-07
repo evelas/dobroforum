@@ -1,4 +1,4 @@
-import { ProfileType, RememberPasswordType } from '../../Types/types';
+import { ProfileType, RememberPasswordType } from '../../types/types';
 
 export const TypesRegistration = {
   SET_REGISTRATION: '/reducers/registration/SET_REGISTRATION' as const,

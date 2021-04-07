@@ -1,33 +1,36 @@
+import { PayloadRemType, ServerResponse } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { regAPI } from '../../api/userAPI';
 import { TypesRememberPassword, rememberPasswordActions } from '../actions';
 import { stopSubmit } from 'redux-form';
 import { resultCodeEnum } from '../../Enum/resultCode';
+import { RememberPasswordType } from '../../types/types';
 
 // Remember Password
-async function getRememberPassword(formData) {
+async function getRememberPassword(formData: RememberPasswordType) {
   const response = await regAPI.rememberPassword(formData);
   return await response.data;
 }
 
-function* workerGetRememberPassword(action) {
+function* workerGetRememberPassword(action: PayloadRemType) {
   try {
-    const data = yield call(getRememberPassword, action.payload);
+    const data: ServerResponse = yield call(getRememberPassword, action.payload);
     if (data.resultCode === resultCodeEnum.Success) {
       // блокируем кнопку
       yield put(rememberPasswordActions.setTryTimeButton(true));
     } else {
-      let message = data.message;
+      const message = data.message;
       yield put(stopSubmit('rememberPassword', { _error: message }));
       // блокируем кнопку
       yield put(rememberPasswordActions.setTryTimeButton(true));
     }
   } catch (e) {
-    let message = 'Сервер перегружен. Пожалуйста, подождите 10 минут.';
+    const message = 'Сервер перегружен. Пожалуйста, подождите 10 минут.';
     yield put(stopSubmit('rememberPassword', { _error: message }));
   }
 }
 
 export function* watchGetRememberPassword() {
-  yield takeEvery(TypesRememberPassword.SET_REMEMBER_PASSWORD, workerGetRememberPassword);
+  // eslint-disable-next-line
+  yield takeEvery(TypesRememberPassword.SET_REMEMBER_PASSWORD as any, workerGetRememberPassword);
 }

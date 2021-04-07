@@ -14,7 +14,6 @@ import cloud2 from '../assets/img/cloud2.png';
 import imgFooter from '../assets/img/footer10.png';
 import inst from '../assets/img/inst.png';
 import vkFooter from '../assets/img/vkfooter.png';
-import awesome from '../assets/img/awesome.png';
 
 import speaker4 from '../assets/img/speakers/speaker4.jpg';
 import speaker5 from '../assets/img/speakers/speaker5.jpg';
@@ -43,7 +42,7 @@ import prize2 from '../assets/img/prize2.png';
 import prize3 from '../assets/img/prize3.png';
 import prize4 from '../assets/img/prize4.png';
 
-function Home() {
+const Home: React.FC = () => {
   return (
     <div className="content">
       <div className="welcome">
@@ -58,9 +57,7 @@ function Home() {
             даже онлайн
           </h2>
         </div>
-        <div className="welcome__footer">
-          <img src={awesome} alt="footer" />
-        </div>
+      
       </div>
       <div className="about" id={`#форум`}>
         <div className="wrapper">
@@ -784,7 +781,7 @@ function Home() {
           </div>
         </div>
       </div>
-      <div className="quiz__text">
+      <div className="quiz__text"  id={`#викторина`}>
         <p>
           Чтобы получить памятные подарки от команды организаторов
           “Доброфорум 9.0”, тебе нужно

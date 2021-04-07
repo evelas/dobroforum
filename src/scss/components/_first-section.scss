@@ -1,4 +1,5 @@
 .welcome {
+  padding-bottom: 60px;
   background: linear-gradient(to bottom, $violet 90%, $white 10%);
   @media (max-width: $tablet) {
     background: linear-gradient(to bottom, $violet 89%, $white 11%);

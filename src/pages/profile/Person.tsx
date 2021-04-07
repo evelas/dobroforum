@@ -1,6 +1,15 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
+import { YoungSoulPersonsType } from '.';
 
-function Person(props) {
+
+type PropsType = {
+  classNameActive: string;
+  onClick: MouseEventHandler;
+  content: YoungSoulPersonsType;
+}
+
+
+const Person: React.FC<PropsType> = (props) => { 
   return (
     <div className="section__person">
       <div className={props.classNameActive}>
