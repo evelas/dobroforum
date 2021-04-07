@@ -23,4 +23,4 @@ In the project directory, you can run:
 
 ### `yarn build`
 
-[a link](https://доброфорум.рф/)
+[ссылка доброфорум](https://доброфорум.рф/)
