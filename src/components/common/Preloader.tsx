@@ -1,5 +1,5 @@
 import React from 'react';
-import preloader from '../../assets/img/preloaderAdmin.gif';
+import preloader from '../../assets/img/prelaoderAdmin.gif';
 
 const Preloader = () => {
   return (

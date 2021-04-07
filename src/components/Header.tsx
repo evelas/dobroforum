@@ -4,15 +4,21 @@ import newlogo from '../assets/img/newlogo.png';
 import icon1 from '../assets/img/icon-1.png';
 import icon2 from '../assets/img/icon-2.png';
 import classnames from 'classnames';
+ 
 
-function Header({ logo }) {
+export type HeaderOwnProps = {
+  logo: boolean;
+}
+
+// function Header({ logo }) {
+const Header = (props: HeaderOwnProps) => {
   return (
     <header className="header">
       <div className="container">
         <Link to="/">
           <div
             className={classnames('header__logo', {
-              active: logo === false,
+              active: props.logo === false,
             })}>
             <img src={newlogo} alt="logo" />
           </div>
@@ -36,7 +42,7 @@ function Header({ logo }) {
         </ul>
         <Link to="/вход">
           <div className="header__icon">
-            {logo ? (
+            {props.logo ? (
               <img src={icon1} alt="Вход в личный кабинет" />
             ) : (
               <img src={icon2} alt="Вход в личный кабинет" />

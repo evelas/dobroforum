@@ -3,7 +3,7 @@
 import React from 'react';
 import { Redirect } from 'react-router-dom';
 
-function useRedirect(boolean, to) {
+function useRedirect(boolean: boolean, to: string) {
   if (boolean) {
     return <Redirect to={to} />;
   }
