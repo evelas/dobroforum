@@ -14,7 +14,6 @@ const rememberPasswordReducer = (state = initialState, action: ActionsType): Ini
       return { ...state, ...action.payload };
     case TypesRememberPassword.TRY_TIME_DISABLED:
       return { ...state, isTryTime: action.payload };
-
     default:
       return state;
   }

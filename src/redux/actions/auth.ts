@@ -41,3 +41,7 @@ export const authActions = {
     payload: isFetching,
   }),
 };
+// export type SetLogin = ReturnType<typeof authActions.setLogin>
+// Можно ретурнить типы actions и подставлять их в саги к action
+// вместо того, чтобы писать там action: PayloadType<LoginFormValuesType>
+// можем написать action: SetLogin - что будет короче, но по сути одно и то же
