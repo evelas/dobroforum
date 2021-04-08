@@ -1,4 +1,4 @@
-import { PayloadType, ServerResponse } from './../../types/types';
+import { LoginFormValuesType, PayloadType, ServerResponse } from './../../types/types';
 import * as Effects from "redux-saga/effects";
 import { authAPI } from '../../api/userAPI';
 import { authActions, TypesAuth } from '../actions';
@@ -11,7 +11,7 @@ async function getLogin(login: string, password: string, forgotMe: boolean) {
 }
 // 1 параметр генератора StrictEffect
 // Интерфейс с any payload / type
-function* workerGetLogin(action: PayloadType): Generator<Effects.StrictEffect, void, never> {
+function* workerGetLogin(action: PayloadType<LoginFormValuesType>): Generator<Effects.StrictEffect, void, never> {
   try {
     const data: ServerResponse = yield Effects.call(
       getLogin,

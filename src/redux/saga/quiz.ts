@@ -1,4 +1,4 @@
-import { PayloadQuizType, ServerResponse } from './../../types/types';
+import { ServerResponse, PayloadType, ActionQuizType } from './../../types/types';
 // import { takeEvery, put, call } from 'redux-saga/effects';
 import * as Effects from "redux-saga/effects";
 import { quizAPI } from '../../api/userAPI';
@@ -13,7 +13,7 @@ async function getQuiz(email: string, answer: string) {
   return await response.data;
 }
 
-function* workerGetQuiz(action: PayloadQuizType): Generator<Effects.StrictEffect, void, never> {
+function* workerGetQuiz(action: PayloadType<ActionQuizType>): Generator<Effects.StrictEffect, void, never> {
   try {
     const data: ServerResponse = yield Effects.call(
       getQuiz,

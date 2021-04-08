@@ -31,57 +31,24 @@ export type ServerResponse = {
   items: ProfileType | null;
   message?: string;
 }
-// auth page
-export type ActionType = {
-  login: string;
-  password: string;
-  forgotMe: boolean;
+
+// main type
+export type PayloadType<T> = {
+  payload: T;
 }
 
-export type PayloadType = {
-  payload: ActionType;
+  // quiz page
+  export type ActionQuizType = {
+    email: string;
+    answer: string;
+  }
 
-}
-// quiz page
-export type ActionQuizType = {
-  email: string;
-  answer: string;
-}
+  // save after edit profile
+  export type ActionSaveEditType = {
+    formData: ProfileType;
+    userId: number;
+  }
 
-export type PayloadQuizType = {
-  payload: ActionQuizType;
-}
-
-// regestr page
-export type PayloadRegType = {
-  payload: ProfileType;
-}
-
-// remember page
-export type PayloadRemType = {
-  payload: RememberPasswordType;
-}
-
-// search
-export type PayloadSearchType = {
-  payload: string;
-}
-
-// search one user
-export type PayloadSearchUserIdType = {
-  payload: number;
-}
-
-// save after edit profile
-export type ActionSaveEditType = {
-  formData: ProfileType;
-  userId: number;
-}
-
-export type PayloadSaveEditType = {
-  payload: ActionSaveEditType;
-  
-}
 
 
  

@@ -1,4 +1,4 @@
-import { PayloadSearchType, ServerResponse } from './../../types/types';
+import { ServerResponse, PayloadType } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { adminAPI } from '../../api/userAPI';
 import { searchActions, TypesSearch } from '../actions';
@@ -9,7 +9,7 @@ async function getSearch(textSearch: string) {
   return await response.data;
 }
 
-function* workerGetSearch(action: PayloadSearchType) {
+function* workerGetSearch(action: PayloadType<string>) {
   try {
     const data: ServerResponse = yield call(getSearch, action.payload);
     yield put(searchActions.setSearchProduct(data.items));

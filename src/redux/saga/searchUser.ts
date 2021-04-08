@@ -1,4 +1,4 @@
-import { PayloadSearchUserIdType, ProfileType, PayloadSaveEditType } from './../../types/types';
+import { ProfileType, ActionSaveEditType, PayloadType } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { adminAPI } from '../../api/userAPI';
 import { searchUserActions, TypesSearchUser } from '../actions';
@@ -8,7 +8,7 @@ async function getOneUser(id: number) {
   return await response.data;
 }
 
-function* workerGetOneUser(action: PayloadSearchUserIdType) {
+function* workerGetOneUser(action: PayloadType<number>) {
   try {
     const data: ProfileType = yield call(getOneUser, action.payload);
     yield put(searchUserActions.isLoadedAction(false));
@@ -30,7 +30,7 @@ async function editProfile(formData: ProfileType, userId: number) {
   return await response.data;
 }
 
-function* workerEditProfile(action: PayloadSaveEditType) {
+function* workerEditProfile(action: PayloadType<ActionSaveEditType>) {
   try {
     const data: ProfileType = yield call(
       editProfile,

@@ -1,4 +1,4 @@
-import { PayloadRemType, ServerResponse } from './../../types/types';
+import { ServerResponse, PayloadType } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { regAPI } from '../../api/userAPI';
 import { TypesRememberPassword, rememberPasswordActions } from '../actions';
@@ -12,7 +12,7 @@ async function getRememberPassword(formData: RememberPasswordType) {
   return await response.data;
 }
 
-function* workerGetRememberPassword(action: PayloadRemType) {
+function* workerGetRememberPassword(action: PayloadType<RememberPasswordType>) {
   try {
     const data: ServerResponse = yield call(getRememberPassword, action.payload);
     if (data.resultCode === resultCodeEnum.Success) {

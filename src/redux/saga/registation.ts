@@ -1,4 +1,4 @@
-import { ProfileType, ServerResponse, PayloadRegType } from './../../types/types';
+import { ProfileType, ServerResponse, PayloadType } from './../../types/types';
 import { takeEvery, put, call } from 'redux-saga/effects';
 import { regAPI } from '../../api/userAPI';
 import { TypesRegistration } from '../actions/registration';
@@ -11,7 +11,7 @@ async function getRegistation(formData: ProfileType) {
   return await response.data;
 }
 
-function* workerGetRegistation(action: PayloadRegType) {
+function* workerGetRegistation(action: PayloadType<ProfileType>) {
   try {
     const data: ServerResponse = yield call(getRegistation, action.payload);
     if (data.resultCode === resultCodeEnum.Success) {
