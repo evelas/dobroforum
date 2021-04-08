@@ -4,7 +4,7 @@ import { InferActionsTypes } from './index';
 type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof initializeActions>;
 
-let initialState = {
+const initialState = {
   isInitialized: false,
 };
 

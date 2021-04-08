@@ -1,4 +1,4 @@
-import { ProfileType } from '../../types/types';
+import { ProfileType, Nullable } from '../../types/types';
 import { InferActionsTypes } from './index';
 import { authActions, TypesAuth } from '../actions';
 
@@ -6,7 +6,7 @@ type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof authActions>;
 
 const initialState = {
-  profile: null as ProfileType | null,
+  profile: null as Nullable<ProfileType>,
   isAuth: false,
   isTryTime: false,
   isFetching: false,

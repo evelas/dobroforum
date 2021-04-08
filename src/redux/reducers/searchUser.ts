@@ -1,12 +1,12 @@
 import { InferActionsTypes } from '.';
-import { ProfileType } from '../../types/types';
+import { Nullable, ProfileType } from '../../types/types';
 import { searchUserActions, TypesSearchUser } from '../actions/searchUser';
 
 type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof searchUserActions>;
 
 const initialState = {
-  userData: null as ProfileType | null,
+  userData: null as Nullable<ProfileType>,
   isLoaded: false,
 };
 

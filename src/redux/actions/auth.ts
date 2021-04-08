@@ -1,6 +1,7 @@
 import { ProfileType } from '../../types/types';
 
 export const TypesAuth = {
+  // воспринимай эти строки как константы
   SET_USER_DATA: '/reducers/auth/SET_USER_DATA' as const,
   LOAD_USER_DATA: '/reducers/auth/LOAD_USER_DATA' as const,
   SET_LOGIN: '/reducers/auth/SET_LOGIN' as const,

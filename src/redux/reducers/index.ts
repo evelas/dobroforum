@@ -17,7 +17,7 @@ const reducers = combineReducers({
 
 type RootReducerType = typeof reducers;
 export type AppStateType = ReturnType<RootReducerType>;
-
+// infer type - додумывание типов
 // type PropsType<T> = T extends { [key: string]: infer U } ? U : never;
 // export type InferActionsTypes<T extends { [key: string]: (...args: any[]) => any }> = ReturnType<
 //   PropsType<T>

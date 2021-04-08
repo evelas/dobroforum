@@ -1,9 +1,9 @@
+import { Nullable, ProfileType } from './../../types/types';
 import { searchActions, TypesSearch } from './../actions';
-import { ProfileType } from '../../types/types';
 import { InferActionsTypes } from './index';
 
 const initialState = {
-  searchUser: null as ProfileType | null,
+  searchUser: null as Nullable<ProfileType>,
 };
 
 const searchReducer = (state = initialState, action: ActionsType): InitialStateType => {

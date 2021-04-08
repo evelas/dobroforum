@@ -50,5 +50,5 @@ export type PayloadType<T> = {
   }
 
 
-
+export type Nullable<T> = null | T;
  

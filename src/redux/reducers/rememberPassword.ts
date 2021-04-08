@@ -4,7 +4,7 @@ import { rememberPasswordActions, TypesRememberPassword } from '../actions';
 type InitialStateType = typeof initialState;
 type ActionsType = InferActionsTypes<typeof rememberPasswordActions>;
 
-let initialState = {
+const initialState = {
   isTryTime: false,
 };
 
