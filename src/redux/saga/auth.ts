@@ -1,4 +1,5 @@
-import { LoginFormValuesType, PayloadType, ServerResponse } from './../../types/types';
+import { AuthAPITypes } from './../../api/userAPI';
+import { LoginFormValuesType, PayloadType, ServerResponse, ProfileType } from './../../types/types';
 import * as Effects from "redux-saga/effects";
 import { authAPI } from '../../api/userAPI';
 import { authActions, TypesAuth } from '../actions';
@@ -45,13 +46,14 @@ export function* watchGetLogin(): Generator {
 
 // Auth
 async function getAuthUserData(): Promise<ServerResponse> {
-  const response = await authAPI.getAuthData();
-  return await response.data;
+  // const response = await authAPI.getAuthData();
+  // return response.data;
+  return (await authAPI.getAuthData()).data;
 }
 
 function* workerGetAuth(): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: ServerResponse = yield Effects.call(getAuthUserData);
+    const data: AuthAPITypes<ProfileType> = yield Effects.call(getAuthUserData);
     if (data.resultCode === resultCodeEnum.Success) {
       yield Effects.put(authActions.toggleIsFetching(true));
       yield Effects.put(authActions.setAuthUserData(data.items, true));

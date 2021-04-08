@@ -1,3 +1,5 @@
+import { resultCodeEnum } from "../Enum/resultCode";
+
 export type ProfileType = {
   userId: number;
   email: string;
@@ -27,9 +29,9 @@ export type LoginFormOwnProps = {
 // sagas
 
 export type ServerResponse = {
-  resultCode: number;
-  items: ProfileType | null;
-  message?: string;
+  resultCode: resultCodeEnum;
+  items: Nullable<ProfileType>;
+  message: string;
 }
 
 // main type

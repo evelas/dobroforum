@@ -2,6 +2,9 @@ import { ProfileType } from '../../types/types';
 
 export const TypesAuth = {
   // воспринимай эти строки как константы
+  // это дает возможность в type использовать только это значение
+  // если убрать const, то можно будет в Type вписывать другое значение
+  // например '/reducers/auth/SET_USER_DATA' стала типом.
   SET_USER_DATA: '/reducers/auth/SET_USER_DATA' as const,
   LOAD_USER_DATA: '/reducers/auth/LOAD_USER_DATA' as const,
   SET_LOGIN: '/reducers/auth/SET_LOGIN' as const,
@@ -41,7 +44,9 @@ export const authActions = {
     payload: isFetching,
   }),
 };
-// export type SetLogin = ReturnType<typeof authActions.setLogin>
+export type SetLogin = ReturnType<typeof authActions.setLogin>
 // Можно ретурнить типы actions и подставлять их в саги к action
 // вместо того, чтобы писать там action: PayloadType<LoginFormValuesType>
 // можем написать action: SetLogin - что будет короче, но по сути одно и то же
+// const actionTest: SetLogin = { type: 'not working couze as const', payload:{ login: 'test', password: 'test', forgotMe: true }}
+ 
