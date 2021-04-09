@@ -1,21 +1,20 @@
-import { ServerResponse, PayloadType, ActionQuizType } from './../../types/types';
-// import { takeEvery, put, call } from 'redux-saga/effects';
 import * as Effects from "redux-saga/effects";
-import { quizAPI } from '../../api/userAPI';
-import { TypesQuiz, authActions } from '../actions';
 import { stopSubmit } from 'redux-form';
+import { TypesQuiz, authActions } from '../actions';
 import { resultCodeEnum } from '../../Enum/resultCode';
-
+import { ApiTypes } from "../../api/api";
+import { quizApi } from '../../api/quizApi';
+import { PayloadType, ActionQuizType } from './../../types/types';
 
 // quiz
 async function getQuiz(email: string, answer: string) {
-  const response = await quizAPI.quiz(email, answer);
-  return await response.data;
+  const response = await quizApi.quiz(email, answer);
+  return response.data;
 }
 
 function* workerGetQuiz(action: PayloadType<ActionQuizType>): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: ServerResponse = yield Effects.call(
+    const data: ApiTypes = yield Effects.call(
       getQuiz,
       action.payload.email,
       action.payload.answer

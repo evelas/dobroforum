@@ -1,26 +1,29 @@
-import { AuthAPITypes } from './../../api/userAPI';
-import { LoginFormValuesType, PayloadType, ServerResponse, ProfileType } from './../../types/types';
 import * as Effects from "redux-saga/effects";
-import { authAPI } from '../../api/userAPI';
-import { authActions, TypesAuth } from '../actions';
 import { stopSubmit } from 'redux-form';
+import { authActions, TypesAuth } from '../actions';
 import { resultCodeEnum } from '../../Enum/resultCode';
+import { ApiTypes } from './../../api/api';
+import { authApi } from '../../api/authApi';
+import { LoginFormValuesType, PayloadType, ProfileType } from './../../types/types';
 
+
+// Login
 async function getLogin(login: string, password: string, forgotMe: boolean) {
-  const response = await authAPI.login(login, password, forgotMe);
-  return await response.data;
+  const response = await authApi.login(login, password, forgotMe);
+  return response.data;
 }
 // 1 параметр генератора StrictEffect
 // Интерфейс с any payload / type
 function* workerGetLogin(action: PayloadType<LoginFormValuesType>): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: ServerResponse = yield Effects.call(
+    const data: ApiTypes = yield Effects.call(
       getLogin,
       action.payload.login,
       action.payload.password,
       action.payload.forgotMe,
     );
     if (data.resultCode === resultCodeEnum.Success) {
+      console.log('data from login saga', data)
       // запускаем auth Saga
       yield Effects.put(authActions.loadUserData());
     } else {
@@ -40,20 +43,19 @@ function* workerGetLogin(action: PayloadType<LoginFormValuesType>): Generator<Ef
   }
 }
 
-export function* watchGetLogin(): Generator {
+export function* watchGetLogin() {
   yield Effects.takeEvery(TypesAuth.SET_LOGIN as never, workerGetLogin);
 }
 
 // Auth
-async function getAuthUserData(): Promise<ServerResponse> {
-  // const response = await authAPI.getAuthData();
-  // return response.data;
-  return (await authAPI.getAuthData()).data;
+async function getAuthUserData() {
+  const response = await authApi.getAuthData();
+  return response.data;
 }
 
 function* workerGetAuth(): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: AuthAPITypes<ProfileType> = yield Effects.call(getAuthUserData);
+    const data: ApiTypes<ProfileType> = yield Effects.call(getAuthUserData);
     if (data.resultCode === resultCodeEnum.Success) {
       yield Effects.put(authActions.toggleIsFetching(true));
       yield Effects.put(authActions.setAuthUserData(data.items, true));
@@ -70,14 +72,14 @@ export function* watchGetAuth() {
 }
 
 // logout
-async function getLogout(): Promise<ServerResponse> {
-  const response = await authAPI.logout();
-  return await response.data;
+async function getLogout() {
+  const response = await authApi.logout();
+  return response.data;
 }
 
 function* workerGetLogout(): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: ServerResponse = yield Effects.call(getLogout);
+    const data: ApiTypes = yield Effects.call(getLogout);
     if (data.resultCode === resultCodeEnum.Success) {
       yield Effects.put(authActions.setAuthUserData(null, false));
     }

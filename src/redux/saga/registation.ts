@@ -1,31 +1,34 @@
-import { ProfileType, ServerResponse, PayloadType } from './../../types/types';
-import { takeEvery, put, call } from 'redux-saga/effects';
-import { regAPI } from '../../api/userAPI';
-import { TypesRegistration } from '../actions/registration';
+import * as Effects from "redux-saga/effects";
 import { stopSubmit } from 'redux-form';
+import { TypesRegistration } from '../actions/registration';
 import { resultCodeEnum } from '../../Enum/resultCode';
+import { ApiTypes } from '../../api/api';
+import { regApi } from '../../api/regApi';
+import { ProfileType, PayloadType } from './../../types/types';
 
 // Registation
 async function getRegistation(formData: ProfileType) {
-  const response = await regAPI.registration(formData);
-  return await response.data;
+  const response = await regApi.registration(formData);
+  return response.data;
 }
 
-function* workerGetRegistation(action: PayloadType<ProfileType>) {
+function* workerGetRegistation(action: PayloadType<ProfileType>): Generator<Effects.StrictEffect, void, never> {
   try {
-    const data: ServerResponse = yield call(getRegistation, action.payload);
+    const data: ApiTypes = yield Effects.call(getRegistation, action.payload);
     if (data.resultCode === resultCodeEnum.Success) {
       // TODO: Логика после регистрации
+      // Сейчас появляется уведомление о том,
+      // что нужно перейти на почту и активировать акк
     } else {
       const message = data.message;
-      yield put(stopSubmit('registration', { _error: message }));
+      yield Effects.put(stopSubmit('registration', { _error: message }));
     }
   } catch (e) {
     const message = 'Сервер перегружен. Пожалуйста, подождите 10 минут.';
-    yield put(stopSubmit('registration', { _error: message }));
+    yield Effects.put(stopSubmit('registration', { _error: message }));
   }
 }
 
 export function* watchGetRegistation() {
-  yield takeEvery(TypesRegistration.SET_REGISTRATION as never, workerGetRegistation);
+  yield Effects.takeEvery(TypesRegistration.SET_REGISTRATION as never, workerGetRegistation);
 }
